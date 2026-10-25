@@ -1,0 +1,18 @@
+{
+  "name": "small-wiki",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Small Wikipedia: turn any interest into a self-contained mini Wikipedia (milestone 1: live prototype)",
+  "scripts": {
+    "build": "node build.mjs",
+    "dev": "node build.mjs --serve",
+    "check": "tsc --noEmit",
+    "try": "node scripts/try.mjs"
+  },
+  "devDependencies": {
+    "esbuild": "^0.25.0",
+    "linkedom": "^0.18.14",
+    "typescript": "^5.6.0"
+  }
+}
