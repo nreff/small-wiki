@@ -6,7 +6,7 @@ Pick one to three English Wikipedia articles as seeds. Small Wikipedia finds the
 
 ![Ice cutting as a Small Wikipedia page. The ring map is on top, and the front page continues below it.](assets/ice-cutting.png)
 
-> **Status: live prototype.** Neighborhoods are built in your browser from the Wikipedia API, so a first visit takes a little while. Repeat visits are cached.
+> **Status: live prototype.** Neighborhoods are built in your browser from the Wikipedia API, so a first visit takes a little while. Repeat visits are cached. The public site is [nreff.github.io/small-wiki](https://nreff.github.io/small-wiki/).
 
 ## Quick start
 

@@ -7,7 +7,7 @@ import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 
 const realFetch = globalThis.fetch;
-globalThis.fetch = (u, o = {}) => realFetch(u, { ...o, headers: { 'user-agent': 'small-wiki-dev/0.1 (nathan.reff@gmail.com)', ...o.headers } });
+globalThis.fetch = (u, o = {}) => realFetch(u, { ...o, headers: { 'user-agent': 'SmallWikipedia/0.1 (https://github.com/nreff/small-wiki)', ...o.headers } });
 
 const out = join(tmpdir(), 'smallwiki-live.mjs');
 await build({ entryPoints: ['src/live.ts'], bundle: true, format: 'esm', platform: 'node', outfile: out, logLevel: 'error' });

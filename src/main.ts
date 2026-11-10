@@ -33,18 +33,29 @@ const shardCache = new Map<string, Promise<Shard>>();
 
 /* ---------- routing ---------- */
 
+declare const __BASE__: string;
+/** Empty locally. `/small-wiki` when the site is a GitHub project page. */
+const BASE = (__BASE__ || '').replace(/\/$/, '');
+const homePath = `${BASE}/`;
+
 const slug = (t: string) => encodeURIComponent(t.replace(/ /g, '_'));
+function here(): string {
+  const p = location.pathname;
+  const rest = BASE && (p === BASE || p.startsWith(`${BASE}/`)) ? p.slice(BASE.length) : p;
+  return rest.startsWith('/') ? rest : `/${rest}`;
+}
 function urlFor(r: Partial<Route>): string {
   const x = { ...route, ...r };
   const q = new URLSearchParams();
   if (x.r !== 1 && x.seeds.length) q.set('r', String(x.r));
   if (x.a) q.set('a', x.a);
   const qs = q.toString();
-  return x.seeds.length ? `/wiki/${x.seeds.map(slug).join('+')}${qs ? '?' + qs : ''}` : '/';
+  const path = x.seeds.length ? `/wiki/${x.seeds.map(slug).join('+')}` : '/';
+  return `${BASE}${path}${qs ? '?' + qs : ''}`;
 }
 
 function parseLocation(): Route {
-  const m = location.pathname.match(/^\/wiki\/(.+)$/);
+  const m = here().match(/^\/wiki\/(.+)$/);
   const seeds = m
     ? m[1].split('+').map((s) => { try { return decodeURIComponent(s).replace(/_/g, ' '); } catch { return s; } }).filter(Boolean).slice(0, MAX_SEEDS)
     : [];
@@ -121,7 +132,7 @@ async function render() {
   } catch (e) {
     if (my !== token) return;
     const msg = e instanceof SeedError ? e.message : 'Wikipedia could not be reached just now. Check your connection and try again.';
-    app.innerHTML = `${topbar(false)}<div class="err"><h2>${esc(e instanceof SeedError ? 'That didn’t work' : 'Something went wrong')}</h2><p class="muted">${esc(msg)}</p><p><a class="btn primary" href="/" data-home>Start somewhere else</a></p></div>`;
+    app.innerHTML = `${topbar(false)}<div class="err"><h2>${esc(e instanceof SeedError ? 'That didn’t work' : 'Something went wrong')}</h2><p class="muted">${esc(msg)}</p><p><a class="btn primary" href="${homePath}" data-home>Start somewhere else</a></p></div>`;
     mountSearch();
     if (!(e instanceof SeedError)) console.error(e);
   }
@@ -129,7 +140,7 @@ async function render() {
 
 function topbar(compact: boolean): string {
   return `<header class="top"><div class="wrap">
-    <a class="brand" href="/" data-home aria-label="Small Wikipedia home"><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="11" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-dasharray="0 4.5"/><path d="M16 16 L7.37 9.18 M16 16 L23.78 8.22 M16 16 L26.95 17 M16 16 L9.47 24.86 M16 16 L21.1 25.74 M7.37 9.18 L23.78 8.22 M23.78 8.22 L26.95 17 M9.47 24.86 L21.1 25.74" fill="none" stroke="currentColor" stroke-width="1.4"/><circle cx="16" cy="16" r="3.3" fill="currentColor"/><circle cx="7.37" cy="9.18" r="2.2" fill="currentColor"/><circle cx="23.78" cy="8.22" r="2.2" fill="var(--c0)"/><circle cx="26.95" cy="17" r="2.2" fill="var(--red)"/><circle cx="9.47" cy="24.86" r="2.2" fill="var(--c2)"/><circle cx="21.1" cy="25.74" r="2.2" fill="currentColor"/></svg>Small Wikipedia</a>
+    <a class="brand" href="${homePath}" data-home aria-label="Small Wikipedia home"><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="11" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-dasharray="0 4.5"/><path d="M16 16 L7.37 9.18 M16 16 L23.78 8.22 M16 16 L26.95 17 M16 16 L9.47 24.86 M16 16 L21.1 25.74 M7.37 9.18 L23.78 8.22 M23.78 8.22 L26.95 17 M9.47 24.86 L21.1 25.74" fill="none" stroke="currentColor" stroke-width="1.4"/><circle cx="16" cy="16" r="3.3" fill="currentColor"/><circle cx="7.37" cy="9.18" r="2.2" fill="currentColor"/><circle cx="23.78" cy="8.22" r="2.2" fill="var(--c0)"/><circle cx="26.95" cy="17" r="2.2" fill="var(--red)"/><circle cx="9.47" cy="24.86" r="2.2" fill="var(--c2)"/><circle cx="21.1" cy="25.74" r="2.2" fill="currentColor"/></svg>Small Wikipedia</a>
     ${compact ? '' : `<div class="search" data-search></div>`}
   </div></header>`;
 }
