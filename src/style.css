@@ -41,6 +41,9 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 400; line-height: 1.2; marg
 .top .wrap { display: flex; gap: 12px; align-items: center; padding-top: 10px; padding-bottom: 10px; }
 .brand { font: 22px var(--serif); color: var(--ink); text-decoration: none; white-space: nowrap; display: flex; gap: 8px; align-items: center; }
 .brand svg { width: 28px; height: 28px; }
+.repo { margin-left: auto; color: var(--ink); display: flex; flex: none; }
+.repo svg { width: 22px; height: 22px; display: block; }
+.repo:hover { color: var(--accent); }
 .brand small { font: 12px var(--sans); color: var(--muted); letter-spacing: .04em; text-transform: uppercase; }
 
 /* search */

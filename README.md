@@ -70,4 +70,4 @@ build.mjs          esbuild bundle and dev server
 
 ## Data and licensing
 
-All content comes from Wikipedia and Wikimedia through public APIs. Article text and images are available under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) and credited in the app. Small Wiki is not affiliated with the Wikimedia Foundation.
+The code is licensed under the [MIT License](LICENSE). Article text and images come from Wikipedia and Wikimedia through public APIs and stay under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/). That content is credited in the app, and the MIT license does not apply to it. Small Wiki is not affiliated with the Wikimedia Foundation.
