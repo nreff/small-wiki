@@ -11,6 +11,7 @@
   --focus: #1a73e8;
   --s0: #2a6fbb; --s1: #d1561e; --s2: #2f9e6b;
   --c0: #2a6fbb; --c1: #d1561e; --c2: #2f9e6b; --c3: #8a4fbf; --c4: #c79a12; --c5: #cc3f6e; --c6: #2b9aa6; --c7: #6c7a89;
+  --red: #d23c3c;
   --serif: "Linux Libertine", "Libertinus Serif", Georgia, "Times New Roman", serif;
   --sans: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   color-scheme: light dark;
@@ -21,6 +22,7 @@
     --warm: #f0a070; --soft: #1d2530; --focus: #8ab4f8;
     --s0: #6aa6ee; --s1: #f08a55; --s2: #5cc795;
     --c0: #6aa6ee; --c1: #f08a55; --c2: #5cc795; --c3: #b78ae6; --c4: #e4bf4a; --c5: #ef7aa0; --c6: #55c4d0; --c7: #9aa7b5;
+    --red: #f07878;
   }
 }
 * { box-sizing: border-box; }
@@ -38,7 +40,7 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 400; line-height: 1.2; marg
 .top { background: var(--paper); border-bottom: 1px solid var(--line); position: sticky; top: 0; z-index: 5; }
 .top .wrap { display: flex; gap: 12px; align-items: center; padding-top: 10px; padding-bottom: 10px; }
 .brand { font: 22px var(--serif); color: var(--ink); text-decoration: none; white-space: nowrap; display: flex; gap: 8px; align-items: center; }
-.brand svg { width: 24px; height: 24px; }
+.brand svg { width: 28px; height: 28px; }
 .brand small { font: 12px var(--sans); color: var(--muted); letter-spacing: .04em; text-transform: uppercase; }
 
 /* search */

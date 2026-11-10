@@ -14,7 +14,7 @@ import { esc, store, wikiUrl } from './util';
 const app = document.getElementById('app')!;
 const MAX_SEEDS = 3;
 const SHARD_TTL = 24 * 3600_000;
-const EXAMPLES = ['Jazz', 'Mycology', 'Byzantine Empire', 'Typography', 'Bauhaus', 'Octopus'];
+const EXAMPLES = ['Jazz', 'Quadrivium', 'Byzantine Empire', 'Graph theory', 'Ice cutting', 'Octopus'];
 
 interface Route {
   seeds: string[];
@@ -129,7 +129,7 @@ async function render() {
 
 function topbar(compact: boolean): string {
   return `<header class="top"><div class="wrap">
-    <a class="brand" href="/" data-home aria-label="Small Wikipedia home"><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="14" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="16" cy="16" r="5" fill="currentColor"/><circle cx="24" cy="9" r="2.5" fill="var(--warm)"/></svg>Small Wikipedia</a>
+    <a class="brand" href="/" data-home aria-label="Small Wikipedia home"><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="11" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-dasharray="0 4.5"/><path d="M16 16 L7.37 9.18 M16 16 L23.78 8.22 M16 16 L26.95 17 M16 16 L9.47 24.86 M16 16 L21.1 25.74 M7.37 9.18 L23.78 8.22 M23.78 8.22 L26.95 17 M9.47 24.86 L21.1 25.74" fill="none" stroke="currentColor" stroke-width="1.4"/><circle cx="16" cy="16" r="3.3" fill="currentColor"/><circle cx="7.37" cy="9.18" r="2.2" fill="currentColor"/><circle cx="23.78" cy="8.22" r="2.2" fill="var(--c0)"/><circle cx="26.95" cy="17" r="2.2" fill="var(--red)"/><circle cx="9.47" cy="24.86" r="2.2" fill="var(--c2)"/><circle cx="21.1" cy="25.74" r="2.2" fill="currentColor"/></svg>Small Wikipedia</a>
     ${compact ? '' : `<div class="search" data-search></div>`}
   </div></header>`;
 }
@@ -143,7 +143,7 @@ function home() {
       <p>Pick one to three articles. Small Wikipedia maps the neighborhood a few links away and builds a front page from only those articles.</p>
       <div class="search" data-search data-big></div>
       <div class="examples">${EXAMPLES.map((e) => `<a href="${urlFor({ seeds: [e], r: 1, a: null })}" data-seeds="${esc(e)}">${esc(e)}</a>`).join('')}
-        <a href="${urlFor({ seeds: ['Jazz', 'Mathematics'], r: 1, a: null })}" data-seeds="Jazz|Mathematics">Jazz + Mathematics</a></div>
+        <a href="${urlFor({ seeds: ['Juggling', 'Mathematics'], r: 1, a: null })}" data-seeds="Juggling|Mathematics">Juggling + Mathematics</a></div>
     </section>
     <div class="how">
       <div><b>Specific, not generic</b><span>Country, year and broad-field hub pages are down-weighted so the interesting articles show up.</span></div>

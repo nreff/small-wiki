@@ -1,3 +1,6 @@
 node_modules
 dist
 *:Zone.Identifier
+
+# Local design notes. Not part of the published repo.
+docs/
