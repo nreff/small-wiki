@@ -2,11 +2,13 @@
 
 Turn any interest into a self-contained mini Wikipedia: a ring map of the articles a few links away, plus a front page built only from them.
 
+**Live site:** [nreff.github.io/small-wiki](https://nreff.github.io/small-wiki/)
+
 Pick one to three English Wikipedia articles as seeds. Small Wikipedia finds the neighborhood around them, down-weights generic hub pages so the interesting material shows up, and lays it out as a map and a Wikipedia-style front page. Every fact comes from Wikipedia, with a link to the source article. No LLM is involved at any step.
 
 ![Ice cutting as a Small Wikipedia page. The ring map is on top, and the front page continues below it.](assets/ice-cutting.png)
 
-> **Status: live prototype.** Neighborhoods are built in your browser from the Wikipedia API, so a first visit takes a little while. Repeat visits are cached. The public site is [nreff.github.io/small-wiki](https://nreff.github.io/small-wiki/).
+> **Status: live prototype.** Neighborhoods are built in your browser from the Wikipedia API, so a first visit takes a little while. Repeat visits are cached.
 
 ## Quick start
 

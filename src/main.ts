@@ -161,7 +161,7 @@ function home() {
       <div><b>Grounded</b><span>Every fact comes from Wikipedia, with a link to the source article.</span></div>
       <div><b>Local reading</b><span>Open an article here and links between neighborhood articles stay inside your wiki.</span></div>
     </div>
-    <footer>Live prototype: built in your browser from the Wikipedia API. Content is from Wikipedia under CC BY-SA 4.0.</footer>
+    <footer>Content from Wikipedia and Wikimedia Commons, <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>.</footer>
   </main>`;
   mountSearch();
   (app.querySelector('.hero input') as HTMLInputElement | null)?.focus();
@@ -222,7 +222,7 @@ function wiki(my: number) {
 
     <section class="block"><h2>Neighborhoods</h2><div class="portals" id="portals"></div></section>
     <section class="block"><h2>Every article, by distance</h2><div id="all"></div></section>
-    <footer>Live prototype: every list is computed in your browser from Wikipedia’s link graph, with no LLM involved. Text and images from Wikipedia and Wikimedia Commons, CC BY-SA 4.0. Neighborhoods are approximate until the offline pipeline (milestone 2) replaces the live scoring.</footer>
+    <footer>Content from Wikipedia and Wikimedia Commons, <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>.</footer>
   </main>`;
 
   mountSearch();
