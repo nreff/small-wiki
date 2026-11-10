@@ -46,4 +46,4 @@ createServer(async (req, res) => {
   } catch {
     res.writeHead(404).end('not found');
   }
-}).listen(5173, () => console.log('Small Wikipedia on http://localhost:5173'));
+}).listen(5173, () => console.log('Small Wiki on http://localhost:5173'));

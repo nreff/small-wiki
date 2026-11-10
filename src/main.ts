@@ -140,18 +140,18 @@ async function render() {
 
 function topbar(compact: boolean): string {
   return `<header class="top"><div class="wrap">
-    <a class="brand" href="${homePath}" data-home aria-label="Small Wikipedia home"><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="11" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-dasharray="0 4.5"/><path d="M16 16 L7.37 9.18 M16 16 L23.78 8.22 M16 16 L26.95 17 M16 16 L9.47 24.86 M16 16 L21.1 25.74 M7.37 9.18 L23.78 8.22 M23.78 8.22 L26.95 17 M9.47 24.86 L21.1 25.74" fill="none" stroke="currentColor" stroke-width="1.4"/><circle cx="16" cy="16" r="3.3" fill="currentColor"/><circle cx="7.37" cy="9.18" r="2.2" fill="currentColor"/><circle cx="23.78" cy="8.22" r="2.2" fill="var(--c0)"/><circle cx="26.95" cy="17" r="2.2" fill="var(--red)"/><circle cx="9.47" cy="24.86" r="2.2" fill="var(--c2)"/><circle cx="21.1" cy="25.74" r="2.2" fill="currentColor"/></svg>Small Wikipedia</a>
+    <a class="brand" href="${homePath}" data-home aria-label="Small Wiki home"><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="11" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-dasharray="0 4.5"/><path d="M16 16 L7.37 9.18 M16 16 L23.78 8.22 M16 16 L26.95 17 M16 16 L9.47 24.86 M16 16 L21.1 25.74 M7.37 9.18 L23.78 8.22 M23.78 8.22 L26.95 17 M9.47 24.86 L21.1 25.74" fill="none" stroke="currentColor" stroke-width="1.4"/><circle cx="16" cy="16" r="3.3" fill="currentColor"/><circle cx="7.37" cy="9.18" r="2.2" fill="currentColor"/><circle cx="23.78" cy="8.22" r="2.2" fill="var(--c0)"/><circle cx="26.95" cy="17" r="2.2" fill="var(--red)"/><circle cx="9.47" cy="24.86" r="2.2" fill="var(--c2)"/><circle cx="21.1" cy="25.74" r="2.2" fill="currentColor"/></svg>Small Wiki</a>
     ${compact ? '' : `<div class="search" data-search></div>`}
   </div></header>`;
 }
 
 function home() {
-  document.title = 'Small Wikipedia';
+  document.title = 'Small Wiki';
   app.innerHTML = `${topbar(true)}
   <main class="wrap">
     <section class="hero">
-      <h1>Make a Wikipedia the size of your interest</h1>
-      <p>Pick one to three articles. Small Wikipedia maps the neighborhood a few links away and builds a front page from only those articles.</p>
+      <h1>Make a wiki the size of your interest</h1>
+      <p>Pick one to three articles. Small Wiki maps the neighborhood a few links away and builds a front page from only those articles.</p>
       <div class="search" data-search data-big></div>
       <div class="examples">${EXAMPLES.map((e) => `<a href="${urlFor({ seeds: [e], r: 1, a: null })}" data-seeds="${esc(e)}">${esc(e)}</a>`).join('')}
         <a href="${urlFor({ seeds: ['Juggling', 'Mathematics'], r: 1, a: null })}" data-seeds="Juggling|Mathematics">Juggling + Mathematics</a></div>
@@ -168,7 +168,7 @@ function home() {
 }
 
 function loading(seeds: string[]) {
-  document.title = `Building ${seeds.join(' + ')}… · Small Wikipedia`;
+  document.title = `Building ${seeds.join(' + ')}… · Small Wiki`;
   app.innerHTML = `${topbar(true)}<div class="loading"><h2>Building a wiki around ${esc(seeds.join(' and '))}</h2>
     <div class="bar" role="progressbar" aria-label="Progress"><i id="bar"></i></div><p id="loadmsg">Starting…</p>
     <p class="small">First builds run live against Wikipedia and take a few seconds. Repeat visits are instant.</p></div>`;
@@ -187,7 +187,7 @@ function wiki(my: number) {
   const v = view!;
   const names = v.seeds.map((s) => s.t);
   const title = names.join(' & ');
-  document.title = `${title} Wikipedia · Small Wikipedia`;
+  document.title = `${title} Wiki · Small Wiki`;
   const count = shown.length + v.seeds.length;
 
   const chips = names
@@ -197,7 +197,7 @@ function wiki(my: number) {
   app.innerHTML = `${topbar(false)}
   <main class="wrap">
     <section class="banner">
-      <h1>Welcome to <em>${esc(title)}</em> Wikipedia</h1>
+      <h1>Welcome to <em>${esc(title)}</em> Wiki</h1>
       <p>${count} articles within a few links, ${v.seeds.length > 1 ? 'where your interests meet and beyond' : 'built from what readers actually follow'}.</p>
       <div class="seeds">${chips}${names.length < MAX_SEEDS ? `<span class="muted small">Use “+ add” in search to combine up to ${MAX_SEEDS} interests.</span>` : ''}</div>
     </section>
@@ -342,15 +342,15 @@ async function article(title: string, my: number) {
   const v = view!;
   const names = v.seeds.map((s) => s.t).join(' & ');
   const local = new Set<string>([...v.nodes.map((n) => n.t)]);
-  app.innerHTML = `${topbar(false)}<main class="wrap"><div class="crumb"><a class="btn" href="${urlFor({ a: null })}" data-back>← ${esc(names)} Wikipedia</a></div><div class="loading" style="margin:10vh auto"><h2>Opening ${esc(title)}…</h2></div></main>`;
+  app.innerHTML = `${topbar(false)}<main class="wrap"><div class="crumb"><a class="btn" href="${urlFor({ a: null })}" data-back>← ${esc(names)} Wiki</a></div><div class="loading" style="margin:10vh auto"><h2>Opening ${esc(title)}…</h2></div></main>`;
   mountSearch();
   try {
     const a = await loadArticle(title, (t) => local.has(t));
     if (my !== token) return;
     const idx = v.nodes.findIndex((n) => n.t === a.title);
-    document.title = `${a.title} · ${names} Wikipedia`;
+    document.title = `${a.title} · ${names} Wiki`;
     app.innerHTML = `${topbar(false)}<main class="wrap">
-      <div class="crumb"><a class="btn" href="${urlFor({ a: null })}" data-back>← ${esc(names)} Wikipedia</a>
+      <div class="crumb"><a class="btn" href="${urlFor({ a: null })}" data-back>← ${esc(names)} Wiki</a>
       ${idx >= v.seeds.length ? `<a class="btn" href="${urlFor({ seeds: [a.title], r: 1, a: null })}" data-seeds="${esc(a.title)}">Build a wiki around this</a>` : ''}
       <a class="btn" href="${wikiUrl(a.title)}" target="_blank" rel="noopener noreferrer">Wikipedia ↗</a></div>
       <article class="article"><h1>${esc(a.title)}</h1>${a.html}</article></main>`;

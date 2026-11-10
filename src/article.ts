@@ -10,7 +10,7 @@ export interface ArticleHtml {
 
 /**
  * Wikipedia's own HTML for an article with links rewritten: neighborhood articles open inside
- * Small Wikipedia (via `data-local`), everything else goes to Wikipedia.
+ * Small Wiki (via `data-local`), everything else goes to Wikipedia.
  */
 export async function loadArticle(title: string, isLocal: (t: string) => boolean): Promise<ArticleHtml> {
   const j = await api({ action: 'parse', page: title, prop: 'text|displaytitle', redirects: 1, disableeditsection: 1, disablelimitreport: 1, disabletoc: 0, mobileformat: 0 });

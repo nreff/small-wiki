@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
-  "description": "Small Wikipedia: turn any interest into a self-contained mini Wikipedia (milestone 1: live prototype)",
+  "description": "Small Wiki: turn any interest into a self-contained small wiki (milestone 1: live prototype)",
   "scripts": {
     "build": "node build.mjs",
     "dev": "node build.mjs --serve",

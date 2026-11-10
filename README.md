@@ -1,14 +1,18 @@
-# Small Wikipedia
+# Small Wiki
 
-Turn any interest into a self-contained mini Wikipedia: a ring map of the articles a few links away, plus a front page built only from them.
+Turn any interest into a self-contained small wiki: a ring map of the articles a few links away, plus a front page built only from them.
 
 **Live site:** [nreff.github.io/small-wiki](https://nreff.github.io/small-wiki/)
 
-Pick one to three English Wikipedia articles as seeds. Small Wikipedia finds the neighborhood around them, down-weights generic hub pages so the interesting material shows up, and lays it out as a map and a Wikipedia-style front page. Every fact comes from Wikipedia, with a link to the source article. No LLM is involved at any step.
+Pick one to three English Wikipedia articles as seeds. Small Wiki finds the neighborhood around them, down-weights generic hub pages so the interesting material shows up, and lays it out as a map and a front page. Every fact comes from Wikipedia, with a link to the source article. No LLM is involved at any step.
 
-![Ice cutting as a Small Wikipedia page. The ring map is on top, and the front page continues below it.](assets/ice-cutting.png)
+![Ice cutting as a Small Wiki page. The ring map is on top, and the front page continues below it.](assets/ice-cutting.png)
 
 > **Status: live prototype.** Neighborhoods are built in your browser from the Wikipedia API, so a first visit takes a little while. Repeat visits are cached.
+
+## Where this came from
+
+Inspired by [Localpedia](https://edjefferson.com/localpedia/), Ed Jefferson’s Wikipedia of only what is a short walk away. This project generalizes that idea from one place to any article, and treats the neighborhood as a knowledge graph you can walk.
 
 ## Quick start
 
@@ -66,4 +70,4 @@ build.mjs          esbuild bundle and dev server
 
 ## Data and licensing
 
-All content comes from Wikipedia and Wikimedia through public APIs. Article text and images are available under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) and credited in the app. Small Wikipedia is not affiliated with the Wikimedia Foundation.
+All content comes from Wikipedia and Wikimedia through public APIs. Article text and images are available under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) and credited in the app. Small Wiki is not affiliated with the Wikimedia Foundation.
